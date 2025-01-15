@@ -90,7 +90,7 @@ export default function ProviderPengajuan() {
           icon={<ArrowPathIcon className="size-5" />}
         />
       </div>
-      <div className="flex flex-wrap gap-6">
+      <div className="flex flex-wrap gap-6 overflow-auto">
         {data.length > 0 ? (
           data.map((item, index) => {
             return (

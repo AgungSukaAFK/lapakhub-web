@@ -79,7 +79,7 @@ export default function RenterUnitsewa() {
           icon={<ArrowPathIcon className="size-5" />}
         />
       </div>
-      <div className="flex flex-wrap gap-6">
+      <div className="flex flex-wrap gap-6 max-h-[calc(100vh-200px)] overflow-y-auto">
         {data &&
           data.map((item: any, index: number) => {
             return <Card key={index} {...item} setDetailData={setDetailData} />;

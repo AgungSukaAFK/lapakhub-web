@@ -70,7 +70,7 @@ export default function Tagihan() {
 
   // Conditional rendering based on role
   if (role === "pending") {
-    return <div>Loading...</div>;
+    return <div></div>;
   } else if (role === "admin") {
     window.location.href = "/dashboard";
   } else if (role === "provider") {

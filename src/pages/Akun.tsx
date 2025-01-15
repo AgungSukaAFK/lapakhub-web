@@ -67,7 +67,7 @@ export default function Akun() {
 
   // Conditional rendering based on role
   if (role === "pending") {
-    return <div>Loading...</div>;
+    return <div></div>;
   } else if (role === "admin" || role === "provider" || role === "renter") {
     return (
       <DashboardLayout role={role}>

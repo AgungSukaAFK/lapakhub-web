@@ -69,7 +69,7 @@ export default function Renter() {
 
   // Conditional rendering based on role
   if (role === "pending") {
-    return <div>Loading...</div>;
+    return <div></div>;
   } else if (role === "admin") {
     return (
       <DashboardLayout role="admin">
@@ -77,9 +77,9 @@ export default function Renter() {
       </DashboardLayout>
     );
   } else if (role === "provider") {
-    return <DashboardLayout role="provider">Role: Provider</DashboardLayout>;
+    return (window.location.href = "/dashboard");
   } else if (role === "renter") {
-    return <DashboardLayout role="renter">Role: Renter</DashboardLayout>;
+    return (window.location.href = "/dashboard");
   } else {
     return <div>Illegal Access</div>;
   }

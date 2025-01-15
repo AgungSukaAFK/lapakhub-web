@@ -71,7 +71,7 @@ export default function Dashboard() {
 
   // Conditional rendering based on role
   if (role === "pending") {
-    return <div>Loading...</div>;
+    return <div></div>;
   } else if (role === "admin") {
     return (
       <DashboardLayout role="admin">

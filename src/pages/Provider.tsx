@@ -5,6 +5,7 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import useLoading from "../hook/useLoading";
 import DashboardLayout from "../layouts/DashboardLayout";
+import AdminProvider from "../Sections/AdminProvider";
 
 export default function Provider() {
   const [user, setUser] = useState<any>(null);
@@ -68,14 +69,17 @@ export default function Provider() {
 
   // Conditional rendering based on role
   if (role === "pending") {
-    return <div>Loading...</div>;
+    return <div></div>;
   } else if (role === "admin") {
-    navigate("/dashboard");
-    return;
+    return (
+      <DashboardLayout role="admin">
+        <AdminProvider />
+      </DashboardLayout>
+    );
   } else if (role === "provider") {
-    return <DashboardLayout role="provider">Role: Provider</DashboardLayout>;
+    return (window.location.href = "/dashboard");
   } else if (role === "renter") {
-    return <DashboardLayout role="renter">Role: Renter</DashboardLayout>;
+    return (window.location.href = "/dashboard");
   } else {
     return <div>Illegal Access</div>;
   }
