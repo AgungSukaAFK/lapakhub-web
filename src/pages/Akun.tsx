@@ -5,11 +5,9 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import useLoading from "../hook/useLoading";
 import DashboardLayout from "../layouts/DashboardLayout";
-import AdminDashboard from "../Sections/AdminDashboard";
-import ProviderDashboard from "../Sections/ProviderDashboard";
-import RenterDashboard from "../Sections/RenterDashboard";
+import SectionAkun from "../Sections/SectionAkun";
 
-export default function Dashboard() {
+export default function Akun() {
   const [user, setUser] = useState<any>(null);
   const [role, setRole] = useState<string>("pending");
   const navigate = useNavigate();
@@ -32,12 +30,10 @@ export default function Dashboard() {
   useEffect(() => {
     const auth = getAuth();
 
-    // Listen for authentication state changes
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       if (currentUser) {
         setUser(currentUser);
       } else {
-        // Navigate to login if user is not authenticated
         setRole("unknown");
         navigate("/login");
       }
@@ -72,22 +68,10 @@ export default function Dashboard() {
   // Conditional rendering based on role
   if (role === "pending") {
     return <div>Loading...</div>;
-  } else if (role === "admin") {
+  } else if (role === "admin" || role === "provider" || role === "renter") {
     return (
-      <DashboardLayout role="admin">
-        <AdminDashboard />
-      </DashboardLayout>
-    );
-  } else if (role === "provider") {
-    return (
-      <DashboardLayout role="provider">
-        <ProviderDashboard />
-      </DashboardLayout>
-    );
-  } else if (role === "renter") {
-    return (
-      <DashboardLayout role="renter">
-        <RenterDashboard />
+      <DashboardLayout role={role}>
+        <SectionAkun />
       </DashboardLayout>
     );
   } else {

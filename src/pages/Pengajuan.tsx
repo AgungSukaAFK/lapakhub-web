@@ -5,11 +5,10 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import useLoading from "../hook/useLoading";
 import DashboardLayout from "../layouts/DashboardLayout";
-import AdminDashboard from "../Sections/AdminDashboard";
-import ProviderDashboard from "../Sections/ProviderDashboard";
-import RenterDashboard from "../Sections/RenterDashboard";
+import RenterPengajuan from "../Sections/RenterPengajuan";
+import ProviderPengajuan from "../Sections/ProviderPengajuan";
 
-export default function Dashboard() {
+export default function Pengajuan() {
   const [user, setUser] = useState<any>(null);
   const [role, setRole] = useState<string>("pending");
   const navigate = useNavigate();
@@ -73,21 +72,17 @@ export default function Dashboard() {
   if (role === "pending") {
     return <div>Loading...</div>;
   } else if (role === "admin") {
-    return (
-      <DashboardLayout role="admin">
-        <AdminDashboard />
-      </DashboardLayout>
-    );
+    window.location.href = "/dashboard";
   } else if (role === "provider") {
     return (
       <DashboardLayout role="provider">
-        <ProviderDashboard />
+        <ProviderPengajuan />
       </DashboardLayout>
     );
   } else if (role === "renter") {
     return (
       <DashboardLayout role="renter">
-        <RenterDashboard />
+        <RenterPengajuan />
       </DashboardLayout>
     );
   } else {

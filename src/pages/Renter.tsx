@@ -5,11 +5,9 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import useLoading from "../hook/useLoading";
 import DashboardLayout from "../layouts/DashboardLayout";
-import AdminDashboard from "../Sections/AdminDashboard";
-import ProviderDashboard from "../Sections/ProviderDashboard";
-import RenterDashboard from "../Sections/RenterDashboard";
+import AdminRenter from "../Sections/AdminRenter";
 
-export default function Dashboard() {
+export default function Renter() {
   const [user, setUser] = useState<any>(null);
   const [role, setRole] = useState<string>("pending");
   const navigate = useNavigate();
@@ -75,21 +73,13 @@ export default function Dashboard() {
   } else if (role === "admin") {
     return (
       <DashboardLayout role="admin">
-        <AdminDashboard />
+        <AdminRenter />
       </DashboardLayout>
     );
   } else if (role === "provider") {
-    return (
-      <DashboardLayout role="provider">
-        <ProviderDashboard />
-      </DashboardLayout>
-    );
+    return <DashboardLayout role="provider">Role: Provider</DashboardLayout>;
   } else if (role === "renter") {
-    return (
-      <DashboardLayout role="renter">
-        <RenterDashboard />
-      </DashboardLayout>
-    );
+    return <DashboardLayout role="renter">Role: Renter</DashboardLayout>;
   } else {
     return <div>Illegal Access</div>;
   }
