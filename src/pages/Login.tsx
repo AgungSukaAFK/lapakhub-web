@@ -97,7 +97,10 @@ const Login = () => {
               />
               <span className="ml-2 text-sm text-gray-600">Remember me</span>
             </label>
-            <a href="#" className="text-sm text-blue-600 hover:underline">
+            <a
+              href="/resetpassword"
+              className="text-sm text-blue-600 hover:underline"
+            >
               Forgot password?
             </a>
           </div>
@@ -113,12 +116,12 @@ const Login = () => {
         </form>
 
         {/* Footer */}
-        <p className="mt-6 text-sm text-center text-gray-600">
+        {/* <p className="mt-6 text-sm text-center text-gray-600">
           Don’t have an account?{" "}
           <a href="#" className="text-blue-600 hover:underline">
             Sign up
           </a>
-        </p>
+        </p> */}
       </div>
     </div>
   );
